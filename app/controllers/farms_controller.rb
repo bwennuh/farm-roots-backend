@@ -11,11 +11,15 @@ class FarmsController < ApplicationController
     render json: @farm
   end
 
-  # def create
-  #     farm = farm.create!(farm_params)
+  def new
+    @farm = Farm.new
+  end
 
-  #     render json: farm
-  # end
+  def create
+    farm = Farm.create!(farm_params)
+
+      render json: farm
+  end
 
   # def destroy
   #     farm = farm.find(params[:id])
