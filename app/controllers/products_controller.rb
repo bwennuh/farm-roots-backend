@@ -12,26 +12,37 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
-  # def create
-  #     product = product.create!(product_params)
+  def new
+    @product = Product.new
+  end
 
-  #     render json: product
-  # end
+  def create
+    product = Product.create!(product_params)
 
-  # def destroy
-  #     product = product.find(params[:id])
-  #     product.destroy!
+    render json: product
+  end
 
-  #     render json: {}
-  # end
+  def edit
+    @product = Product.find(params[:id])
 
-  # def update
-  #     product = product.find(params[:id])
-  #     # product.update(likes: product.likes + 1)
-  #     product.update(product_params)
+    render json: @product
+  end
 
-  #     render json: product
-  # end
+  def update
+      product = Product.find(params[:id])
+      # product.update(likes: product.likes + 1)
+      product.update(product_params)
+
+      render json: product
+  end
+
+
+  def destroy
+      product = Product.find(params[:id])
+      product.destroy!
+
+      render json: {}
+  end
 
   private
 
