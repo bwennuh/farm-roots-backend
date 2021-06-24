@@ -18,7 +18,12 @@ class FarmsController < ApplicationController
   def create
     farm = Farm.create!(farm_params)
 
+    if farm.valid?
       render json: farm
+    else
+      flash[:errors] = farm.errors.full_messages
+      render json: flash[:errors]
+    end
   end
 
   # def destroy
