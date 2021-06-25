@@ -11,11 +11,20 @@ class CustomersController < ApplicationController
     render json: @customer
   end
 
-  # def create
-  #     customer = Customer.create!(customer_params)
+  def new
+    @customer = Customer.new
+  end
 
-  #     render json: customer
-  # end
+  def create
+    customer = Customer.create!(customer_params)
+
+    if customer.valid?
+      render json: customer
+    else
+      flash[:errors] = customer.errors.full_messages
+      render json: flash[:errors]
+    end
+  end
 
   # def destroy
   #     customer = Customer.find(params[:id])
