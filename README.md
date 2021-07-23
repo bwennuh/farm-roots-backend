@@ -1,24 +1,25 @@
-# README
+# Welcome to the Farm Roots Database! 
 
-## Backend Setup
-```
-rails new <my-project> --api -T --database=postgresql
-```
+<img height="300" src="https://www.massaudubon.org/var/ezdemo_site/storage/images/site_ma/get-outdoors/wildlife-sanctuaries/drumlin-farm/11401-262-eng-US/drumlin-farm-wildlife-sanctuary.jpg"></img>
 
-Let's go through this in detail:
+## About Farm Roots
 
-* `--api`
-  *  Make a [Rails 5 API](http://edgeguides.rubyonrails.org/api_app.html), basically you're telling Rails you don't want any of the stuff you wouldn't need for an application where Rails is not rendering views. Think the ActionView library (`form_for`, `link_to`, etc..), ERB, Security protections that ensure forms were rendered by the Rails app, things like that.
-* `-T`
-  * don't generate tests for this app
-* `--database=postgresql`
-  * Set this up to use a Postgres (as opposed to SQLite) database. If you ever want to push this to Heroku, Heroku requires a Postgres database. There won't be too much difference in how you have to write your code. You'll have to be sure to run `rails db:create` and make sure you have postgres running (i.e you can see the elephant)
-* Be sure to do the necessary setup for the [rack-cors-gem](https://github.com/cyu/rack-cors)
-* You may want to use [active-model-serializers](https://github.com/rails-api/active_model_serializers/tree/0-10-stable)
+Farm Roots is an online farmers market app - designed to allow farms (or rather, the farmers) to upload their current produce options to be able to sell directly to consumers.
 
-## Notes
-By default both your client app and your rails app will run on port 3000. You'll have to specify one or the other to run on a separate port.
-* Rails: `rails s -p <some_number_thats_not_3000>`
-* React: Check out this [issue](https://github.com/facebookincubator/create-react-app/issues/1083)
+Farm Roots has two types of users - the farms (re: farmers) and the consumers (re: anyone who wants to buy some fresh produce!). When logging in, a user is to specify whether or not they're logging in as a farmer, which will dictate their home feed.
 
-A great article on how [DHH thinks about setting up controllers in Rails](http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/)
+If a consumer does not currently have an account with Farm Roots, they can sign up as a new user to be able to start using the app.
+
+If a farm is not currently a part of the Farm Roots database, farmers can fill out a new farm form in order to get their farm's data added to the app & start adding in the farm's produce information.
+
+Feel free to check out the front-end repo <a href="https://github.com/bwennuh/farm-roots-frontend">here</a>!
+
+## Database
+
+The Farm Roots database currently includes all of the current users (which includes both consumers and farms) and all of the current produce associated with each farm.
+
+Consumers have a name, address, and phone number.
+
+Farms have a name, address, bio, and an associated farmer (name).
+
+Each produce item has a name, price, and is associated to a specific farm. 
